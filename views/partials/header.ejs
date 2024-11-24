@@ -1,0 +1,46 @@
+<!-- views/partials/header.ejs -->
+<header class="bg-black text-white p-4" style="box-shadow: 0 4px 7px -1px rgba(242, 255, 0, 0.75);">
+  <nav class="container mx-auto flex items-center justify-between flex-wrap">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+      <a href="/<%= lng %>/" class="text-2xl font-bold"><%= t('title') %></a>
+    </div>
+    <div class="block lg:hidden">
+      <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gold border-gold hover:text-white hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20"><path d="M0 3h20v2H0z M0 9h20v2H0z M0 15h20v2H0z"/></svg>
+      </button>
+    </div>
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block" id="nav-content">
+      <ul class="text-sm lg:flex-grow flex flex-col lg:flex-row">
+        <li class="mr-4">
+          <a href="/<%= lng %>/" class="block mt-4 lg:inline-block lg:mt-0 hover:text-gold"><%= t('home') %></a>
+        </li>
+        <li class="mr-4">
+          <a href="/<%= lng %>/getintouch" class="block mt-4 lg:inline-block lg:mt-0 hover:text-gold"><%= t('getintouch') %></a>
+        </li>
+      </ul>
+      <div>
+        <!-- Language Switcher -->
+        <form id="language-form" class="mt-4 lg:mt-0"></form>
+            <select name="language" id="language-select" class="bg-black text-white border border-gold rounded px-2 py-1">
+            <option value="en" <%= lng === 'en' ? 'selected' : '' %>>English</option>
+            <option value="ro" <%= lng === 'ro' ? 'selected' : '' %>>Română</option>
+            <option value="ru" <%= lng === 'ru' ? 'selected' : '' %>>Русский</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Toggle Navbar
+  document.getElementById('nav-toggle').addEventListener('click', function(){
+    document.getElementById('nav-content').classList.toggle('hidden');
+  });
+
+  // Language Switcher
+  document.getElementById('language-select').addEventListener('change', function(){
+    var selectedLang = this.value;
+    window.location.href = '/' + selectedLang + window.location.pathname.substring(3);
+  });
+</script>

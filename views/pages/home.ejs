@@ -1,0 +1,43 @@
+<!-- views/pages/home.ejs -->
+<div
+    class="flex flex-col items-center justify-center min-h-screen py-12"
+    data-aos="fade-up"
+>
+    <img
+        src="/img/pfp.png"
+        alt="<%= t('name') %>"
+        class="md:w-1/3 mb-4 shadow-lg sm:w-full"
+        style="
+            -webkit-filter: drop-shadow(0px 0px 6px #ffffffc2);
+            filter: drop-shadow(0px 0px 6px #ffffffc2);
+        "
+    />
+    <h1 class="text-4xl font-bold mb-2"><%= t('name') %></h1>
+    <p class="text-center max-w-md mb-4"><%= t('slogan') %></p>
+    <a
+        href="/<%= lng %>/#i-specialise-in"
+        class="bg-gold text-black px-6 py-2 rounded-full hover:bg-white transition duration-300"
+    >
+        <%= t('discover_more') %>
+    </a>
+</div>
+
+<!-- Section #i-specialise-in -->
+<section class="bg-black text-white py-12" id="i-specialise-in">
+  <div class="w-full">
+    <h2 class="text-3xl font-bold text-center mb-8"><%= t('i_specialize_in') %></h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mx-2">
+      <!-- Specialization Cards -->
+      <% const specializations = t('specializations', { returnObjects: true }); %>
+      <% specializations.forEach(function(spec, index) { %>
+        <div
+          class="rounded-lg p-6 shadow-lg glass"
+          data-aos="fade-up"
+          data-aos-delay="<%= index * 100 %>"
+        >
+          <h3 class="text-xl font-semibold mb-2"><%= spec %></h3>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
