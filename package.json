@@ -8,6 +8,7 @@
     "build:css": "tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/output.css --watch",
     "dev": " nodemon index.js",
     "start": "node index.js",
+    "build": "tailwindcss -i ./public/styles/tailwind.css -o ./public/styles/output.css",
     "vercel-build": "npm run build"
   },
   "keywords": [],
