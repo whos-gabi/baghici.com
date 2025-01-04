@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -20,11 +19,25 @@ i18next
     detection: {
       order: ['path', 'querystring', 'cookie', 'header'],
       lookupPath: 'lng',
+      checkWhitelist: true,
       caches: false,
-    },    
+    },
     nonExplicitSupportedLngs: true,
-    debug: false, // Set to true for debugging
+    debug: true, // Enable debugging temporarily
   });
+
+// Sanitize Accept-Language header
+app.use((req, res, next) => {
+  const acceptLanguage = req.headers['accept-language'];
+  const supportedLngs = ['en', 'ro', 'ru'];
+  if (acceptLanguage) {
+    const parsedLngs = acceptLanguage.split(',').map(lang => lang.split(';')[0].trim());
+    req.headers['accept-language'] = parsedLngs.find(lang => supportedLngs.includes(lang)) || 'en';
+  } else {
+    req.headers['accept-language'] = 'en';
+  }
+  next();
+});
 
 // Middleware to handle i18next
 app.use(i18nextMiddleware.handle(i18next));

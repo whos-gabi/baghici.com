@@ -1,12 +1,29 @@
-<!-- views/partials/footer.ejs -->
-<footer class="bg-black text-white p-4 mt-8 " style="box-shadow: 0 -1px 7px rgba(242, 255, 0, 0.75);">
-    <div class="container mx-auto text-center">
-        <p>BTC: <span class="text-gold">bc1qaxjm5nfel2lcmc8zgjuxg3gavlncxaqgpcm7zh</span></p>
-        <p>USDT (TRC 20): <span class="text-gold">TVJyi62nQ1jNqQgvEe885dkWqzSvzqKDXR</span></p>
-    </div>
-
-    <p class="text-center mt-4">© <%= new Date().getFullYear() %> <%= t('title') %></p>
+<footer class="bg-black text-white p-4 mt-8" style="box-shadow: 0 -1px 7px rgba(242, 255, 0, 0.75);">
+  <div class="text-center">
+      <p>© <%= new Date().getFullYear() %> Baghici Gabriel</p>
+      <p>"Crafting digital solutions for the future"</p>
+      <div class="mt-2">
+          <a href="https://t.me/cyberbroski" target="_blank" class="footer-link mx-2">Telegram</a> |
+          <a href="https://instagram.com/whos_gabi_" target="_blank" class="footer-link mx-2">Instagram</a> |
+          <a href="https://wa.me/40730792946" target="_blank" class="footer-link mx-2">WhatsApp</a> |
+          <a href="https://github.com/whos-gabi" target="_blank" class="footer-link mx-2">GitHub</a>
+      </div>
+  </div>
 </footer>
+
+<style>
+  .footer-link {
+      color: #FFD700; /* Gold color */
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+  .footer-link:hover {
+      color: #FFF700; /* Lighter gold on hover */
+      text-decoration: underline; /* Optional for hover effect */
+  }
+</style>
+
+
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
