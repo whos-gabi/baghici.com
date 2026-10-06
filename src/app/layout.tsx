@@ -1,30 +1,29 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
+import type { Metadata, Viewport } from "next";
+import { Instrument_Sans, JetBrains_Mono, Unbounded } from "next/font/google";
 import Script from "next/script";
+import { site } from "@/content/site";
+import { revealHeadScript } from "@/lib/reveal";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const display = Unbounded({ subsets: ["latin"], variable: "--font-unbounded", display: "swap" });
+const body = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument-sans", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Builder's Hub | Architecting Digital Ecosystems",
-  description:
-    "Full-stack engineer shipping SaaS, decentralized apps, mobile, and AI products.",
+  metadataBase: new URL("https://baghici.com"),
+  title: site.meta.title,
+  description: site.meta.description,
   openGraph: {
-    title: "Builder's Hub | Architecting Digital Ecosystems",
-    description:
-      "Full-stack engineer shipping SaaS, decentralized apps, mobile, and AI products.",
+    title: site.meta.title,
+    description: site.meta.description,
     type: "website",
+    url: "https://baghici.com",
+    siteName: site.brand.name,
   },
+  twitter: { card: "summary", title: site.meta.title, description: site.meta.description },
 };
+
+export const viewport: Viewport = { themeColor: "#0A0A0F" };
 
 export default function RootLayout({
   children,
@@ -32,14 +31,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-WN07WSC84E"
-          strategy="afterInteractive"
-        />
+    // The inline script below adds the "js" class before hydration, hence suppressHydrationWarning.
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Reveal animations only hide content while JS can show it again; a failsafe un-hides it if hydration stalls. */}
+        <script dangerouslySetInnerHTML={{ __html: revealHeadScript }} />
+      </head>
+      <body>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-WN07WSC84E" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];

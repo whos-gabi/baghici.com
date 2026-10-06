@@ -1,0 +1,43 @@
+.players{
+  display:grid;gap:clamp(2.5rem,1.5rem + 3vw,4rem) clamp(1.5rem,1rem + 2vw,3rem);
+  grid-template-columns:minmax(0,1fr);
+}
+@media (min-width:700px){
+  .players{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (min-width:1200px){
+  /* fluid thirds: a fixed 2x420px left the Together card ~195px wide at 1200-1280px and its text overflowed */
+  .players{grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,.85fr)}
+}
+.player{display:flex;flex-direction:column;gap:var(--s-4)}
+.frame{width:100%;max-width:440px;margin-bottom:var(--s-3)}
+.frame :global(.duo){border-radius:12px}
+.hud{
+  position:absolute;z-index:3;left:12px;right:12px;top:12px;
+  display:flex;justify-content:space-between;
+  font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;
+}
+.hud span{background:rgba(10,10,15,.72);padding:.3rem .5rem;border-radius:6px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hud span:first-child{color:var(--acid)}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1rem}
+.player h3{font-size:clamp(1.6rem,1.2rem + 1.4vw,2.2rem);letter-spacing:-.03em}
+.role{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--violet-hi)}
+.tag{
+  align-self:flex-start;font-family:var(--f-display);font-size:.9rem;font-weight:500;
+  padding:.45rem .8rem;border-radius:8px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.35);color:#E4DBFF;
+}
+.bio{color:var(--muted);max-width:52ch}
+
+.together{
+  position:relative;align-self:start;
+  border:1px solid var(--line-2);border-radius:var(--radius);padding:clamp(1.5rem,1rem + 2vw,2.25rem);
+  background:
+    linear-gradient(to right, var(--line) 1px, transparent 1px) 0 0/24px 24px,
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px) 0 0/24px 24px,
+    var(--bg-2);
+}
+@media (min-width:700px) and (max-width:1199px){.together{grid-column:1 / -1}}
+@media (min-width:1200px){.together{position:sticky;top:calc(var(--nav-h) + 2rem)}}
+.togetherLabel{display:flex;align-items:center;gap:.6rem;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:var(--s-5);line-height:1.4}
+.togetherLabel b{color:var(--violet-hi);font-weight:500}
+.togetherText{font-family:var(--f-display);font-weight:400;font-size:clamp(1.15rem,1rem + .7vw,1.5rem);line-height:1.4;letter-spacing:-.015em;color:var(--text)}
