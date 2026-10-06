@@ -1,7 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { site } from "@/content/site";
 import { whatsappHref } from "@/lib/links";
-import { render, text } from "@/test/render";
+import { act, mount, render, text } from "@/test/render";
 import { Hero } from "./Hero";
 import { Nav } from "./Nav";
 import { Ticker } from "./Ticker";
@@ -42,6 +42,64 @@ describe("Nav", () => {
     expect(cta?.getAttribute("href")).toBe(whatsappHref(site.contact));
     expect(cta?.getAttribute("target")).toBe("_blank");
     expect(text(cta)).toContain(site.hero.ctaPrimary);
+  });
+});
+
+type ChangeListener = (e: { matches: boolean }) => void;
+
+/** A MediaQueryList stub; `legacy` drops addEventListener, as in Safari 12-13. */
+function stubMatchMedia({ legacy }: { legacy: boolean }) {
+  const listeners = new Set<ChangeListener>();
+  const mql = {
+    matches: true,
+    media: "(max-width: 1199px)",
+    addListener: vi.fn((fn: ChangeListener) => listeners.add(fn)),
+    removeListener: vi.fn((fn: ChangeListener) => listeners.delete(fn)),
+    ...(legacy
+      ? {}
+      : {
+          addEventListener: vi.fn((_type: string, fn: ChangeListener) => listeners.add(fn)),
+          removeEventListener: vi.fn((_type: string, fn: ChangeListener) => listeners.delete(fn)),
+        }),
+  };
+  vi.spyOn(window, "matchMedia").mockReturnValue(mql as unknown as MediaQueryList);
+  const leaveMobile = () => act(() => listeners.forEach((fn) => fn({ matches: false })));
+  return { mql, leaveMobile, listenerCount: () => listeners.size };
+}
+
+describe("Nav menu on leaving the mobile breakpoint", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  function openMenu(container: HTMLElement) {
+    const toggle = container.querySelector("button");
+    act(() => toggle?.click());
+    expect(toggle?.getAttribute("aria-expanded")).toBe("true");
+    return toggle;
+  }
+
+  it("closes the menu through addEventListener where supported", () => {
+    const { mql, leaveMobile, listenerCount } = stubMatchMedia({ legacy: false });
+    const { container, unmount } = mount(<Nav />);
+    const toggle = openMenu(container);
+    leaveMobile();
+    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+    expect(mql.addListener).not.toHaveBeenCalled();
+    unmount();
+    expect(listenerCount()).toBe(0);
+  });
+
+  it("falls back to addListener when MediaQueryList has no addEventListener (Safari 12-13)", () => {
+    const { mql, leaveMobile, listenerCount } = stubMatchMedia({ legacy: true });
+    const { container, unmount } = mount(<Nav />);
+    const toggle = openMenu(container);
+    leaveMobile();
+    expect(toggle?.getAttribute("aria-expanded")).toBe("false");
+    expect(mql.addListener).toHaveBeenCalledTimes(1);
+    unmount();
+    expect(mql.removeListener).toHaveBeenCalledWith(mql.addListener.mock.calls[0][0]);
+    expect(listenerCount()).toBe(0);
   });
 });
 

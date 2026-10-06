@@ -42,8 +42,13 @@ export function Nav() {
     const onChange = (e: MediaQueryListEvent) => {
       if (!e.matches) setOpen(false);
     };
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
+    // Safari 12-13 only has the older addListener API; calling addEventListener there would crash the page.
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    }
+    mq.addListener(onChange);
+    return () => mq.removeListener(onChange);
   }, []);
 
   const closeOnLinkClick = (e: MouseEvent<HTMLDivElement>) => {

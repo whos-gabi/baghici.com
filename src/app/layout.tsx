@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, JetBrains_Mono, Unbounded } from "next/font/google";
 import Script from "next/script";
 import { site } from "@/content/site";
+import { revealHeadScript } from "@/lib/reveal";
 import "./globals.css";
 
 const display = Unbounded({ subsets: ["latin"], variable: "--font-unbounded", display: "swap" });
@@ -33,8 +34,8 @@ export default function RootLayout({
     // The inline script below adds the "js" class before hydration, hence suppressHydrationWarning.
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
-        {/* Reveal animations only hide content when JS is available to show it again. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Reveal animations only hide content while JS can show it again; a failsafe un-hides it if hydration stalls. */}
+        <script dangerouslySetInnerHTML={{ __html: revealHeadScript }} />
       </head>
       <body>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-WN07WSC84E" strategy="afterInteractive" />
