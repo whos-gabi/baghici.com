@@ -1,0 +1,200 @@
+{
+  "brand": "Baghici Creative Technologies",
+  "meta_title": "Baghici Creative Technologies | Tech Partners for Founders",
+  "meta_description": "Two 22-year-old builders from Romania. We turn business problems into working tech for founders: CRMs, landing pages, automation, web and mobile apps.",
+  "nav": [
+    {
+      "label": "About",
+      "anchor": "about"
+    },
+    {
+      "label": "Philosophy",
+      "anchor": "philosophy"
+    },
+    {
+      "label": "Services",
+      "anchor": "services"
+    },
+    {
+      "label": "Work",
+      "anchor": "work"
+    },
+    {
+      "label": "Lab",
+      "anchor": "lab"
+    },
+    {
+      "label": "Contact",
+      "anchor": "contact"
+    }
+  ],
+  "hero": {
+    "eyebrow": "Two 22-year-olds. Zero corporate fluff.",
+    "h1": "You bring the problem. We ship the system.",
+    "sub": "We solve business problems with tech, systems and creativity. CRMs, landing pages, automation and apps for founders who move fast, built by two digital natives who do too.",
+    "cta_primary": "Book a virtual coffee chat",
+    "cta_secondary": "See our work"
+  },
+  "about": {
+    "eyebrow": "The dynamic duo",
+    "heading": "Two people. Two superpowers.",
+    "intro": "We're 22 and grew up online. We learn new tools the week they drop, move fast and stay hungry. Our age isn't a footnote. It's our edge.",
+    "people": [
+      {
+        "name": "Teodora",
+        "role": "Business Development",
+        "bio": "Teodora loves building businesses. She's driven and set on leading an amazing team. She believes in sales done right: ethical, value-driven, never pushy. She blends the technical with the creative, so your idea makes sense to builders and buyers alike.",
+        "tag": "Sells it. Means it."
+      },
+      {
+        "name": "Gabi",
+        "role": "Systems Thinker & Builder",
+        "bio": "Gabi is the team's builder and a systems thinker to the core. Hand over a messy problem with no textbook answer and Gabi comes back with an unconventional fix that works. Problem-solver, through and through.",
+        "tag": "Has a system for that."
+      }
+    ],
+    "together": "Teodora sees the business. Gabi sees the system. You get both in the same conversation: a plan that sells, tech that holds up, nothing lost in translation."
+  },
+  "philosophy": {
+    "eyebrow": "Our philosophy",
+    "heading": "Purpose meets profit.",
+    "body": "We've built history games for the National History Museum of Romania. We research how AI can improve education. And we ship mobile games while a trend is still hot. That's not a contradiction. It's the point. Impact work taught us to create long-term value. The games market taught us speed, monetization and how cash flow really works. Your business needs both. We bring both.",
+    "pillars": [
+      {
+        "label": "Purpose",
+        "line": "Digital projects for education and culture, like our work with MNIR."
+      },
+      {
+        "label": "Lab",
+        "line": "Internal R&D testing how AI could help close the public-private education gap."
+      },
+      {
+        "label": "Profit",
+        "line": "Trend-driven mobile games, shipped fast. Our pragmatic growth engine."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "What we can build for you",
+    "heading": "Less busywork. More business.",
+    "intro": "You don't need a bloated proposal. You need the fix for your bottleneck. Here's what we build, and what it does for you.",
+    "items": [
+      {
+        "title": "Custom CRMs",
+        "benefit": "Stop running sales out of spreadsheets and DMs. Get a CRM shaped around how you actually sell.",
+        "details": [
+          "Built around your pipeline",
+          "Your data, your rules",
+          "No features you'll never use"
+        ]
+      },
+      {
+        "title": "High-converting landing pages",
+        "benefit": "Pages with one job: turning visitors into leads, sign-ups or sales. Fast, clear and mobile-first.",
+        "details": [
+          "Clear message, clean design",
+          "Fast on every device",
+          "Built to test and iterate"
+        ]
+      },
+      {
+        "title": "Automation systems",
+        "benefit": "Hand the repetitive work to software. Get your hours back for the work only you can do.",
+        "details": [
+          "Connects the tools you use",
+          "Automates follow-ups and reports",
+          "Runs while you sleep"
+        ]
+      },
+      {
+        "title": "Custom internal systems",
+        "benefit": "When off-the-shelf software doesn't fit, we build the tool your operations actually need.",
+        "details": [
+          "Inventory, operations, dashboards",
+          "Designed around your workflow",
+          "Like our museum warehouse system"
+        ]
+      },
+      {
+        "title": "Web & mobile apps",
+        "benefit": "From first prototype to an app in your customers' hands. Built by a team that ships its own products.",
+        "details": [
+          "Lean MVPs, fast iterations",
+          "Web and mobile, one team",
+          "Built to grow with you"
+        ]
+      }
+    ]
+  },
+  "work": {
+    "eyebrow": "Selected work",
+    "heading": "Proof, not promises.",
+    "intro": "Impact work, our own products and client projects. Different worlds, same approach: understand the problem, build the system, ship it.",
+    "mnir": {
+      "title": "National History Museum of Romania (MNIR)",
+      "subtitle": "Featured collaboration: education and operations",
+      "items": [
+        {
+          "title": "Interactive history games",
+          "line": "Interactive games that make history click for kids."
+        },
+        {
+          "title": "Smart warehouse system",
+          "line": "A custom warehouse management system, built for the museum."
+        }
+      ]
+    },
+    "projects": [
+      {
+        "name": "Magnetron.io",
+        "subtitle": "Our own mobile arcade game",
+        "category": "Mobile game"
+      },
+      {
+        "name": "to you.",
+        "subtitle": "Beauty services app, launching soon",
+        "category": "App"
+      },
+      {
+        "name": "Tank Arena",
+        "subtitle": "3D game, no install needed",
+        "category": "Browser game"
+      },
+      {
+        "name": "Two Hands",
+        "subtitle": "Client work for a massage studio",
+        "category": "Landing page"
+      }
+    ]
+  },
+  "lab": {
+    "eyebrow": "Innovation lab",
+    "heading": "Rethinking school, one prototype at a time.",
+    "intro": "Our internal R&D, where we design and test AI architectures for education. The goal: show that public schooling can get better and narrow the gap with private education. Think of it as our homework.",
+    "items": [
+      {
+        "title": "Adaptive learning prototypes",
+        "line": "Lab prototypes exploring AI that meets each student at their level, not the class average."
+      },
+      {
+        "title": "Closing the public-private gap",
+        "line": "Internal research into how AI could give public-school students the support private schools offer."
+      },
+      {
+        "title": "Architectures for tomorrow's schools",
+        "line": "Architectures we're testing in-house for AI tools that could run on public-school budgets."
+      }
+    ]
+  },
+  "final_cta": {
+    "eyebrow": "Let's talk",
+    "heading": "Coffee's on us. Virtually, anyway.",
+    "body": "Tell us what you're building and what's slowing you down. We'll listen, ask the right questions and tell you straight what we'd build. No slides, no pressure. Worst case, you leave with fresh ideas.",
+    "cta": "Book a virtual coffee chat",
+    "email_line": "Prefer email? Write to office@baghici.com"
+  },
+  "footer": {
+    "tagline": "Tech, systems and creativity. Built in Romania by two 22-year-olds.",
+    "copyright": "© 2026 Baghici Creative Technologies"
+  }
+}
