@@ -1,20 +1,33 @@
-import { BentoGrid } from "@/components/bento/bento-grid";
-import { getShowcaseData } from "@/lib/github";
+import { About } from "@/components/site/About";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
+import { Hero } from "@/components/site/Hero";
+import { Lab } from "@/components/site/Lab";
+import { Nav } from "@/components/site/Nav";
+import { Philosophy } from "@/components/site/Philosophy";
+import { Services } from "@/components/site/Services";
+import { RevealObserver } from "@/components/site/ui/Reveal";
+import { Work } from "@/components/site/Work";
+import { site } from "@/content/site";
 
-export const dynamic = "force-dynamic";
-export const runtime = "edge";
-
-export default async function Home() {
-  const { repos, orgs } = await getShowcaseData();
-
+export default function Home() {
   return (
     <>
-      <BentoGrid repos={repos} orgs={orgs} />
-      <footer
-        id="footer"
-        className="h-32 w-full bg-transparent"
-        aria-label="Footer anchor"
-      />
+      <a className="skip" href="#main">
+        {site.ui.skip}
+      </a>
+      <Nav />
+      <main id="main">
+        <Hero />
+        <About />
+        <Philosophy />
+        <Services />
+        <Work />
+        <Lab />
+        <Contact />
+      </main>
+      <Footer />
+      <RevealObserver />
     </>
   );
 }
