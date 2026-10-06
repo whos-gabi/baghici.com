@@ -1,0 +1,21 @@
+.cta{
+  position:relative;text-align:left;
+  border:1px solid var(--line-2);border-radius:calc(var(--radius) + 6px);
+  padding:clamp(2rem,1rem + 5vw,6rem) clamp(1.25rem,.5rem + 5vw,6rem);
+  overflow:hidden;
+  background:
+    linear-gradient(to right, rgba(236,234,244,.05) 1px, transparent 1px) 0 0/64px 64px,
+    linear-gradient(to bottom, rgba(236,234,244,.05) 1px, transparent 1px) 0 0/64px 64px,
+    var(--bg-2);
+}
+.title{font-size:clamp(2rem,.9rem + 4.8vw,5.25rem);letter-spacing:-.04em;line-height:1.02;max-width:15ch}
+.title span{color:var(--violet-hi);display:block}
+.body{margin-top:var(--s-6);color:var(--muted);font-size:clamp(1.05rem,1rem + .3vw,1.2rem);max-width:56ch}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-5) var(--s-6);margin-top:var(--s-7)}
+.primary:global(.btn){--pad-y:1.15rem;--pad-x:1.6rem;font-size:1.05rem}
+.mail{color:var(--muted);font-size:.98rem}
+.mail a{color:var(--text);text-decoration:underline;text-decoration-color:rgba(167,139,250,.6);text-underline-offset:4px;text-decoration-thickness:1px;transition:color .2s, text-decoration-color .2s}
+.mail a:hover{color:var(--violet-hi);text-decoration-color:currentColor}
+.corner{position:absolute;top:clamp(1rem,.5rem + 1.5vw,2rem);right:clamp(1rem,.5rem + 1.5vw,2rem);font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:.5rem}
+.corner::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--acid)}
+@media (max-width:520px){.corner{position:static;margin-bottom:var(--s-5)}}
