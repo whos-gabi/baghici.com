@@ -1,0 +1,6 @@
+.brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;min-width:0;border-radius:8px}
+.mark{flex:none;width:34px;height:34px}
+.text{display:flex;flex-direction:column;line-height:1;min-width:0}
+.name{font-family:var(--f-display);font-weight:700;font-size:1rem;letter-spacing:-.01em}
+.sub{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.35rem;white-space:nowrap}
+@media (max-width:360px){.sub{font-size:.56rem;letter-spacing:.06em}}
