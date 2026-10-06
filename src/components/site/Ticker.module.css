@@ -1,0 +1,29 @@
+.ticker{position:relative;border-block:1px solid var(--line);overflow:hidden;background:var(--bg-2)}
+.track{display:flex;width:max-content;animation:tick 38s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+:global(.motion-paused) .track{animation-play-state:paused}
+/* WCAG 2.2.2: a keyboard/touch way to stop the looping ticker and blinking HUD bits */
+.pause{
+  position:absolute;top:0;right:0;bottom:0;z-index:1;display:grid;place-items:center;width:3rem;padding:0;
+  background:linear-gradient(90deg, rgba(14,14,21,0), var(--bg-2) 35%);border:0;color:var(--muted);cursor:pointer;
+}
+.pause:hover{color:var(--text)}
+.pause:focus-visible{outline-offset:-4px}
+.list{display:flex;flex:none}
+.list li{
+  display:flex;align-items:center;gap:1.4rem;padding:1rem 1.4rem;white-space:nowrap;
+  font-family:var(--f-display);font-weight:500;font-size:clamp(.95rem,.85rem + .4vw,1.2rem);color:var(--muted);letter-spacing:-.01em;
+}
+.list li::after{content:"";width:7px;height:7px;transform:rotate(45deg);border:1px solid var(--violet)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+:global(html:not(.js)) .pause{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  /* static ticker: the list must wrap, otherwise everything past the first item is clipped on narrow screens */
+  .track{animation:none;width:auto}
+  .list[aria-hidden="true"]{display:none}
+  .list{flex:1 1 auto;flex-wrap:wrap}
+  .list li{white-space:normal;padding-block:.6rem}
+  .pause{display:none}
+}
